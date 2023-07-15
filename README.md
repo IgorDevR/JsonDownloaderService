@@ -1,14 +1,9 @@
-# JsonDownloaderService
-
 Инструкция по запуску web сервиса. 
 
 Перейти по ссылке на сайт GitHub.com. Нажать на зеленую кнопку со стрелочкой и выбрать «Download ZIP». Начнется загрузка архива. Далее перейти в папку с загруженным архивом и использую архиватор, извлечь в любое удобно место папку из архива. 
+Если у вас есть visual studio вы можете самостоятельно собрать проект. Если нет, то внутри архива есть еще один с название build.zip. Его тоже нужно извлечь в удобное место. 
 
-В папке с проектом необходимо перейти по следующему адресу:
-
- «Место в котором находится разархивированная папка»\JsonDownloaderService\JsonDownloaderService\bin\Debug\net6.0.
-
-В папке net6.0 найти файл под названием «JsonDownloaderService.exe». И запустить его простым двойным нажатием мыши или клавишей Enter.
+В папке build (или папке проекта если собираете сами) найти файл под названием «JsonDownloaderService.exe». И запустить его простым двойным нажатием мыши или клавишей Enter.
 Отроется черное консольное окно, в котором будет указан адрес по которому будет доступен нужный нам контроллер с его точками доступа.
 
 Скопируйте адрес отсюда https://localhost:5001 , http://localhost:5000  или из консоли. Какой-то из адресов будет недоступен, попробуйте другой.  По умолчанию откроется пустая страница с несколькими строчками, в которых указаны точки доступа к контроллеру. 
@@ -21,7 +16,7 @@
 
 Через консоль (Sql shell) нужно будет ввести значения сервера. По умолчанию (сервер - localhost, для база данных - postgres, порт - 5432, в качестве пользователя – postresб пароль, который вы задавали во время установки, часто – root. При вводе пароля символы не отображаются).
 
-В любом тестовом редакторе нужно открыть файлы под названием «ScriptCreateDbAndTable.sql» в папке проекта по пути(«\JsonDownloaderService\JsonDownloaderService»).
+В любом тестовом редакторе можно открыть файл под названием «ScriptCreateDbAndTable.sql» в папке проекта по пути(«\JsonDownloaderService\JsonDownloaderService»). Или Использовать команды из этого документа.
 
 Теперь нужно ввести команды по очереди. Ниже те же команды, что и в файле «ScriptCreateDbAndTable.sql».
 
@@ -81,6 +76,6 @@ INSERT INTO links (article) VALUES ('https://example.com');
 INSERT INTO space_x_event (title, event_date_utc, event_date_unix, details, "LinksId") VALUES ('TestTitle', '2023-07-14T19:19:02.031727Z', 1231231231, 'DetailTest', (SELECT id FROM links WHERE article = 'https://example.com'));
 
 
-Не забываем менять базу данных в «\JsonDownloaderService\JsonDownloaderService\bin\Debug\net6.0.\appsettings.json».
+Не забываем менять базу данных в «build.\appsettings.json».
 
 «"Default": "Server=localhost;Port=5432;Database= spacexeventsdb;User Id=postgres;Password=root;"».
