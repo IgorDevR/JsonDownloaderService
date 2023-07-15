@@ -1,0 +1,24 @@
+﻿namespace JsonDownloaderService.Views;
+
+@model IEnumerable<IGrouping<string, Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor>>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Welcome to the Index page!</h1>
+<p>This is the default page of your application.</p>
+
+<h2>Controller Actions:</h2>
+
+@foreach (var controllerGroup in Model)
+{
+    <h3>@controllerGroup.Key</h3>
+
+    <ul>
+        @foreach (var action in controllerGroup)
+        {
+            <li>@Html.ActionLink(action.ActionName, action.ActionName, action.ControllerName)</li>
+        }
+    </ul>
+}
